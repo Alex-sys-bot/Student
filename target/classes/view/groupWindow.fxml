@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="722.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.controllers.GroupWindowController">
+   <children>
+      <TableView fx:id="tableCourseGroup" layoutX="14.0" layoutY="506.0" prefHeight="246.0" prefWidth="1170.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+        <columns>
+          <TableColumn fx:id="columnId" prefWidth="61.0" text="id" />
+          <TableColumn fx:id="columnNumberOfOrder" prefWidth="304.0" text="№ Приказа формирования группы" />
+            <TableColumn fx:id="columnDateCreateGroup" prefWidth="212.0" text="Дата Формирования группы" />
+            <TableColumn fx:id="columnCipherGroup" prefWidth="126.0" text="Шифр группы" />
+            <TableColumn fx:id="columnNameGroup" minWidth="4.0" prefWidth="67.0" text="Название группы" />
+            <TableColumn fx:id="columnCourseGroup" minWidth="0.0" prefWidth="283.0" text="Курс" />
+            <TableColumn fx:id="columnQuantityStudents" prefWidth="75.0" text="Количество студентов в группе" />
+            <TableColumn fx:id="columnAllStudentInCourse" prefWidth="75.0" text="Количество студентов на курсе" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <AnchorPane layoutX="14.0" layoutY="49.0" prefHeight="358.0" prefWidth="693.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="49.0">
+         <children>
+            <Label layoutX="69.0" layoutY="22.0" text="№ Приказа формирования группы" AnchorPane.leftAnchor="69.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNumberOrder" layoutX="69.0" layoutY="50.0" prefHeight="25.0" prefWidth="203.0" />
+            <Label layoutX="69.0" layoutY="89.0" prefHeight="17.0" prefWidth="226.0" text="Дата формирования группы">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="400.0" layoutY="22.0" prefHeight="17.0" prefWidth="226.0" text="Шифр группы">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCipherGroup" layoutX="400.0" layoutY="50.0" prefHeight="25.0" prefWidth="203.0" />
+            <DatePicker fx:id="dateCreateGroup" layoutX="69.0" layoutY="118.0" prefHeight="25.0" prefWidth="203.0" />
+            <Button layoutX="238.0" layoutY="246.0" mnemonicParsing="false" onAction="#buttonAddGroup" prefHeight="32.0" prefWidth="218.0" text="Добавить группу" />
+            <ComboBox fx:id="comboCourse" layoutX="400.0" layoutY="177.0" prefHeight="25.0" prefWidth="203.0" promptText="Список курсов" />
+            <Label layoutX="400.0" layoutY="155.0" text="Курсы">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="399.0" layoutY="89.0" text="Учебный год">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNameGroup" layoutX="67.0" layoutY="177.0" prefHeight="25.0" prefWidth="203.0" />
+            <Label layoutX="67.0" layoutY="155.0" prefHeight="20.0" prefWidth="203.0" text="Название группы">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtLearningYear" layoutX="400.0" layoutY="118.0" prefHeight="25.0" prefWidth="203.0" />
+            <Label fx:id="lblStatus" alignment="TOP_LEFT" layoutX="18.0" layoutY="327.0" prefHeight="47.0" prefWidth="659.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="14.0" layoutY="14.0" text="Группы" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblQuantityAllStudentsInCourse" layoutX="15.0" layoutY="691.0" prefHeight="17.0" prefWidth="657.0" />
+   </children>
+</AnchorPane>

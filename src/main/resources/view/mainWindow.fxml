@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="parentWindow" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.controllers.MainWindowController">
+   <children>
+      <TabPane layoutX="6.0" layoutY="25.0" prefHeight="602.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+        <tabs>
+          <Tab fx:id="tabGroup" text="Группы">
+               <content>
+                  <AnchorPane fx:id="anchorPaneGroup" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+          </Tab>
+          <Tab fx:id="tabStudent" text="Студенты">
+               <content>
+                  <AnchorPane fx:id="anchorPaneStudent" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+          </Tab>
+            <Tab text="Успевааемость">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane fx:id="anchorPaneProgress" layoutX="14.0" layoutY="14.0" prefHeight="746.0" prefWidth="1300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <MenuBar layoutY="2.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Файл">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#buttonOpenDisciplineWindow" text="Дисциплины" />
+              <MenuItem mnemonicParsing="false" onAction="#buttonOpenTeachersWindow" text="Преподаватели" />
+                  <MenuItem mnemonicParsing="false" onAction="#buttonOpenSpecialtyWindow" text="Специальности" />
+                  <MenuItem mnemonicParsing="false" onAction="#buttonOpenLearningPlaneWindow" text="Учебный план" />
+                  <MenuItem fx:id="hide" mnemonicParsing="false" onAction="#buttonCloseProgram" text="Выйти из программы" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Редактирование">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Поддержка">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+         <effect>
+            <DropShadow />
+         </effect>
+      </MenuBar>
+   </children>
+</AnchorPane>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+<!-- Connection to DataBase -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/student?serverTimezone=UTC</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">1111</property>
+
+<!-- Settings hibernate -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name="show_sql">true</property>
+
+<!-- Mapping class -->
+        <mapping class="com.company.model.Specialty"/>
+        <mapping class="com.company.model.Qualification"/>
+        <mapping class="com.company.model.LearningPlan"/>
+        <mapping class="com.company.model.Discipline"/>
+        <mapping class="com.company.model.DisciplineLearningPlan"/>
+        <mapping class="com.company.model.DisciplineSemester"/>
+        <mapping class="com.company.model.Semester"/>
+        <mapping class="com.company.model.Progress"/>
+        <mapping class="com.company.model.Teachers"/>
+        <mapping class="com.company.model.Course"/>
+        <mapping class="com.company.model.CourseGroup"/>
+        <mapping class="com.company.model.Student"/>
+        <mapping class="com.company.model.Grup"/>
+        <mapping class="com.company.model.TypeLesson"/>
+        <mapping class="com.company.model.Lesson"/>
+    </session-factory>
+</hibernate-configuration>

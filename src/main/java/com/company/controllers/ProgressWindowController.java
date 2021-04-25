@@ -15,6 +15,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class ProgressWindowController {
@@ -38,7 +41,7 @@ public class ProgressWindowController {
     private TableColumn<Student, String> columnMidlBall;
 
     @FXML
-    private TableColumn<Student, Integer> columnRating;
+    private TableColumn<Student, String> columnRating;
 
     @FXML
     private Label lblDiscipline;
@@ -63,14 +66,25 @@ public class ProgressWindowController {
         columnFirstName.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getFirst_name()));
         columnLastName.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getLast_name()));
         columnPatronymic.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getPatronymic()));
-        columnDate.setCellValueFactory(p -> {
+        columnRating.setCellValueFactory(p -> {
 
-//            SessionFactory factory = new Configuration().configure().buildSessionFactory();
-//            Session session = factory.openSession();
-//            Query query = session.createQuery("select lesson.dateLesson from Progress where student.id = 1");
-//            System.out.println(query.list());
+            List<Integer> list = new ArrayList<>();
+            Set<Progress> listProgress = p.getValue().getProgresses();
 
-            return null;
+            for (Progress progress: listProgress) {
+                if (progress.getStudent().getId() == p.getValue().getId()
+                        && progress.getLesson()
+                        .getDisciplineSemester()
+                        .getDisciplineLearningPlan()
+                        .getDiscipline().getName().equals("Математика")){
+                    list.add(progress.getRating());
+                }
+            }
+            if (list.size() != 0) {
+                return new SimpleObjectProperty<>(String.valueOf(list));
+            } else {
+                return new SimpleObjectProperty<>("н");
+            }
         });
 
 
@@ -87,8 +101,7 @@ public class ProgressWindowController {
 //                   add comboBox value;
                     if (progress.getLesson().getDisciplineSemester()
                             .getDisciplineLearningPlan().getDiscipline()
-                            .getName().equals(lblDiscipline.getText())
-                            && progress.getStudent().getCourseGroup().getGrup().getNameGroup().equals("12т")) {
+                            .getName().equals(lblDiscipline.getText())) {
                         sizeRating += 1;
                         rating += progress.getRating();
                     }

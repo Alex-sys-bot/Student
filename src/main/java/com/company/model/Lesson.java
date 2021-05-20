@@ -34,12 +34,10 @@ public class Lesson {
 
     @Override
     public String toString() {
-        return "Lesson{" +
-                "id=" + id +
-                ", themeLesson='" + themeLesson + '\'' +
-                ", dateLesson=" + dateLesson +
-                ", typeLesson=" + typeLesson +
-                ", disciplineSemester=" + disciplineSemester +
-                '}';
+        return "Тема урока: " + themeLesson + ", " + dateLesson + " учебный план: "
+                + disciplineSemester.getDisciplineLearningPlan().getLearningPlan()
+                .getYearOfAdmission().toString().substring(0,10)
+                + ", семестр: " + disciplineSemester.getSemester().getNumberSemester() + ", курс: "
+                + disciplineSemester.getSemester().getCourse().getNumberCourse();
     }
 }

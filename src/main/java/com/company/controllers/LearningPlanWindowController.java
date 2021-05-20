@@ -279,7 +279,6 @@ public class LearningPlanWindowController {
 
     @FXML
     void buttonUpDisciplineToSemester(ActionEvent event) {
-
     }
 
 }

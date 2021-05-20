@@ -22,7 +22,7 @@
                   <AnchorPane fx:id="anchorPaneStudent" prefHeight="200.0" prefWidth="200.0" />
                </content>
           </Tab>
-            <Tab text="Успевааемость">
+            <Tab text="Успеваемость">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -41,6 +41,7 @@
               <MenuItem mnemonicParsing="false" onAction="#buttonOpenTeachersWindow" text="Преподаватели" />
                   <MenuItem mnemonicParsing="false" onAction="#buttonOpenSpecialtyWindow" text="Специальности" />
                   <MenuItem mnemonicParsing="false" onAction="#buttonOpenLearningPlaneWindow" text="Учебный план" />
+                  <MenuItem mnemonicParsing="false" onAction="#upScreen" text="Обновить экран" />
                   <MenuItem fx:id="hide" mnemonicParsing="false" onAction="#buttonCloseProgram" text="Выйти из программы" />
             </items>
           </Menu>

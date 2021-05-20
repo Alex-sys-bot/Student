@@ -48,16 +48,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", dateBirthday=" + dateBirthday +
-                ", receiptDate=" + receiptDate +
-                ", phone='" + phone + '\'' +
-                ", numberCreditBook='" + numberCreditBook + '\'' +
-                ", courseGroup=" + courseGroup +
-                '}';
+        return last_name + " " + first_name + " " + patronymic + ", " + courseGroup.getGrup().getNameGroup() +
+                ", " + getCourseGroup().getGrup().getDate().toString().substring(0,10);
     }
 }

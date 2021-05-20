@@ -29,7 +29,7 @@ public class DisciplineSemester {
     private Semester semester;
 
 
-    @ManyToMany(mappedBy = "disciplineSemesters")
+    @ManyToMany(mappedBy = "disciplineSemesters", fetch = FetchType.EAGER)
     Set<Teachers> teachers;
 
     @OneToMany(mappedBy = "disciplineSemester", fetch = FetchType.EAGER)
@@ -39,11 +39,9 @@ public class DisciplineSemester {
 
     @Override
     public String toString() {
-        return "DisciplineSemester{" +
-                "id=" + id +
-                ", audit_hours=" + audit_hours +
-                ", disciplineLearningPlan=" + disciplineLearningPlan +
-                ", semester=" + semester +
-                '}';
+        return disciplineLearningPlan.getDiscipline().getName() + ", " + "учебный план: "
+                + disciplineLearningPlan.getLearningPlan().getYearOfAdmission().toString().substring(0,10) + ", "
+                + "семестр: " + getSemester().getNumberSemester() + ", курс: "
+                + getSemester().getCourse().getNumberCourse();
     }
 }

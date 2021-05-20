@@ -20,7 +20,7 @@ public class Course {
     @Column(name = "number_course",nullable = false)
     private int numberCourse;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
     private Set<Semester> semesters;
 
     @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)

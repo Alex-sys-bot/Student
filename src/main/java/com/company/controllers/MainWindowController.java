@@ -5,15 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.Window;
 
 import java.io.IOException;
 
@@ -154,6 +151,11 @@ public class MainWindowController {
     @FXML
     void buttonCloseProgram(ActionEvent event) throws IOException {
         System.exit(1);
+    }
+
+    @FXML
+    void upScreen(){
+        initialize();
     }
 
 }

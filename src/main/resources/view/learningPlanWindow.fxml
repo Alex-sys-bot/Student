@@ -111,7 +111,6 @@
             <TableColumn fx:id="columnAllHours" prefWidth="75.0" text="Всего часов" />
             <TableColumn fx:id="columnAllAuditHours" prefWidth="75.0" text="Аудиторные часы" />
             <TableColumn fx:id="columnAuditHoursToSemester" prefWidth="75.0" text="Аудиторные часы за семестр" />
-            <TableColumn fx:id="columnTeachers" prefWidth="75.0" text="Преподователь" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

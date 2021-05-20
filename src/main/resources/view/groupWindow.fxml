@@ -21,7 +21,6 @@
             <TableColumn fx:id="columnNameGroup" minWidth="4.0" prefWidth="67.0" text="Название группы" />
             <TableColumn fx:id="columnCourseGroup" minWidth="0.0" prefWidth="283.0" text="Курс" />
             <TableColumn fx:id="columnQuantityStudents" prefWidth="75.0" text="Количество студентов в группе" />
-            <TableColumn fx:id="columnAllStudentInCourse" prefWidth="75.0" text="Количество студентов на курсе" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

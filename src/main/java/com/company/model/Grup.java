@@ -32,10 +32,6 @@ public class Grup {
 
     @Override
     public String toString() {
-        return "Grup{" +
-                "id=" + id +
-                ", numberOrder='" + numberOrder + '\'' +
-                ", date=" + date +
-                '}';
+        return nameGroup + ", дата формирования: " + date.toString().substring(0,10);
     }
 }

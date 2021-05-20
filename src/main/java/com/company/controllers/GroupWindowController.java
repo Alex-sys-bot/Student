@@ -50,8 +50,6 @@ public class GroupWindowController {
     @FXML
     private TableColumn<CourseGroup, Integer> columnQuantityStudents;
 
-    @FXML
-    private TableColumn<CourseGroup, Integer> columnAllStudentInCourse;
 
     @FXML
     private TextField txtNumberOrder;
@@ -111,14 +109,13 @@ public class GroupWindowController {
         columnCourseGroup.setCellValueFactory(cg -> new SimpleObjectProperty<>(cg.getValue().getCourse().getNumberCourse()));
         columnQuantityStudents.setCellValueFactory(cg -> new SimpleObjectProperty<>(cg.getValue().getStudents().size()));
         columnQuantityStudents.setCellValueFactory(cg -> new SimpleObjectProperty<>(cg.getValue().getStudents().size()));
-        columnAllStudentInCourse.setCellValueFactory(cg -> new SimpleObjectProperty<>(cg.getValue().getStudents().size()));
 
 //      number of students on the course
         int quantity = 0;
         for (Student student: listStudent) {
             if (student.getCourseGroup().getCourse().getNumberCourse() == 1){
                 quantity += 1;
-                lblQuantityAllStudentsInCourse.setText("Колличество студентов на курсе: " + quantity);
+                lblQuantityAllStudentsInCourse.setText("Общее колличество студентов: " + quantity);
             }
 
         }

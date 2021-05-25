@@ -7,102 +7,170 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="820.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.controllers.LearningPlanWindowController">
+<AnchorPane prefHeight="820.0" prefWidth="1300.0" style="-fx-background-color: #96ecff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.controllers.LearningPlanWindowController">
    <children>
-      <AnchorPane layoutX="14.0" layoutY="48.0" prefHeight="432.0" prefWidth="1030.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="48.0">
+      <AnchorPane layoutX="255.0" layoutY="50.0" prefHeight="432.0" prefWidth="1030.0" style="-fx-border-color: #000; -fx-border-width: 2; -fx-border-radius: 40; -fx-background-color: #65bdfc; -fx-background-radius: 40;" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="50.0">
          <children>
-            <TextField fx:id="txtAllHours" layoutX="431.0" layoutY="98.0" prefHeight="25.0" prefWidth="172.0" />
-            <TextField fx:id="txtAllAuditHours" layoutX="431.0" layoutY="166.0" prefHeight="25.0" prefWidth="172.0" />
-            <TextField fx:id="txtAuditHoursToSemester" layoutX="717.0" layoutY="98.0" prefHeight="25.0" prefWidth="172.0" AnchorPane.rightAnchor="141.0" />
-            <ComboBox fx:id="comboQualification" layoutX="104.0" layoutY="166.0" prefHeight="25.0" prefWidth="172.0" promptText="Список квалификаций" AnchorPane.leftAnchor="104.0" />
-            <ComboBox fx:id="comboLearningPlan" layoutX="432.0" layoutY="223.0" prefHeight="25.0" prefWidth="172.0" promptText="Список уч. планов" />
-            <ComboBox fx:id="comboDiscipline" layoutX="432.0" layoutY="279.0" prefHeight="25.0" prefWidth="172.0" promptText="Список дисциплин" />
-            <ComboBox fx:id="comboDisciplineFromLearningPlane" layoutX="720.0" layoutY="166.0" prefHeight="25.0" prefWidth="172.0" promptText="Список дисциплин из уч. плана" AnchorPane.rightAnchor="138.0" />
-            <Label layoutX="103.0" layoutY="74.0" text="Год поступления учебного плана" AnchorPane.leftAnchor="103.0">
+            <TextField fx:id="txtAllHours" layoutX="379.0" layoutY="47.0" prefHeight="25.0" prefWidth="172.0" style="-fx-border-color: #000; -fx-border-radius: 30; -fx-background-radius: 30;">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></TextField>
+            <TextField fx:id="txtAllAuditHours" layoutX="429.0" layoutY="96.0" prefHeight="25.0" prefWidth="172.0" style="-fx-border-color: #000; -fx-border-radius: 30; -fx-background-radius: 30;">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></TextField>
+            <TextField fx:id="txtAuditHoursToSemester" layoutX="643.0" layoutY="76.0" prefHeight="25.0" prefWidth="172.0" style="-fx-border-color: #000; -fx-border-radius: 30; -fx-background-radius: 30;" AnchorPane.rightAnchor="215.0">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></TextField>
+            <ComboBox fx:id="comboQualification" layoutX="51.0" layoutY="197.0" prefHeight="33.0" prefWidth="172.0" promptText="Список квалификаций" style="-fx-background-radius: 30; -fx-border-radius: 30;" AnchorPane.leftAnchor="51.0" />
+            <ComboBox fx:id="comboLearningPlan" layoutX="403.0" layoutY="142.0" prefHeight="33.0" prefWidth="172.0" promptText="Список уч. планов" style="-fx-background-radius: 30; -fx-border-radius: 30;" />
+            <ComboBox fx:id="comboDiscipline" layoutX="388.0" layoutY="187.0" prefHeight="33.0" prefWidth="172.0" promptText="Список дисциплин" style="-fx-background-radius: 30; -fx-border-radius: 30;" />
+            <ComboBox fx:id="comboDisciplineFromLearningPlane" layoutX="643.0" layoutY="141.0" prefHeight="33.0" prefWidth="172.0" promptText="Список дисциплин из уч. плана" style="-fx-background-radius: 30; -fx-border-radius: 30;" AnchorPane.rightAnchor="215.0" />
+            <Label layoutX="53.0" layoutY="56.0" prefHeight="43.0" prefWidth="172.0" text="Год поступления учебного плана" wrapText="true" AnchorPane.leftAnchor="53.0">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="103.0" layoutY="139.0" text="Квалификация " AnchorPane.leftAnchor="103.0">
+            <Label layoutX="53.0" layoutY="167.0" text="Квалификация " AnchorPane.leftAnchor="53.0">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="431.0" layoutY="74.0" prefHeight="17.0" prefWidth="149.0" text="Всего часов">
+            <Label layoutX="270.0" layoutY="53.0" prefHeight="17.0" prefWidth="149.0" text="Всего часов">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="432.0" layoutY="139.0" text="Аудиторные часы">
+            <Label layoutX="267.0" layoutY="102.0" text="Аудиторные часы">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="432.0" layoutY="199.0" text="Учебный план">
+            <Label layoutX="272.0" layoutY="148.0" text="Учебный план">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="432.0" layoutY="256.0" text="Дисциплина">
+            <Label layoutX="272.0" layoutY="193.0" text="Дисциплина">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
             <Label layoutX="282.0" layoutY="270.0" />
-            <Label layoutX="717.0" layoutY="74.0" text="Аудиторные часы в семестре" AnchorPane.rightAnchor="124.0">
+            <Label layoutX="645.0" layoutY="52.0" text="Аудиторные часы в семестре" AnchorPane.rightAnchor="126.0">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="719.0" layoutY="139.0" text="Дисциплина  из учебного плана" AnchorPane.rightAnchor="103.0">
+            <Label layoutX="645.0" layoutY="115.0" text="Дисциплина  из учебного плана" AnchorPane.rightAnchor="104.0">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <ComboBox fx:id="comboSemesters" layoutX="720.0" layoutY="223.0" prefHeight="25.0" prefWidth="172.0" promptText="Список семестров" AnchorPane.rightAnchor="138.0" />
-            <ComboBox fx:id="comboTeachers" layoutX="721.0" layoutY="279.0" prefHeight="25.0" prefWidth="172.0" promptText="Список преподователей" AnchorPane.rightAnchor="137.0" />
-            <Label layoutX="722.0" layoutY="199.0" text="Семестр" AnchorPane.rightAnchor="254.0">
+            <ComboBox fx:id="comboSemesters" layoutX="728.0" layoutY="181.0" prefHeight="33.0" prefWidth="172.0" promptText="Список семестров" style="-fx-background-radius: 30; -fx-border-radius: 30;" AnchorPane.rightAnchor="130.0" />
+            <ComboBox fx:id="comboTeachers" layoutX="781.0" layoutY="218.0" prefHeight="33.0" prefWidth="172.0" promptText="Список преподователей" style="-fx-background-radius: 30; -fx-border-radius: 30;" AnchorPane.rightAnchor="77.0" />
+            <Label layoutX="646.0" layoutY="187.0" text="Семестр" AnchorPane.rightAnchor="310.0">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="719.0" layoutY="256.0" text="Преподаватель" AnchorPane.rightAnchor="212.0">
+            <Label layoutX="644.0" layoutY="220.0" text="Преподаватель" AnchorPane.rightAnchor="252.0">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="103.0" layoutY="223.0" mnemonicParsing="false" onAction="#buttonAddLearningYear" text="Добавить" />
-            <Button layoutX="431.0" layoutY="334.0" mnemonicParsing="false" onAction="#buttonAddDisciplineToLearningPlane" text="Добавить" />
-            <Button layoutX="521.0" layoutY="334.0" mnemonicParsing="false" onAction="#buttonUpDisciplineLearningPlane" text="Изменить" />
-            <Button layoutX="723.0" layoutY="334.0" mnemonicParsing="false" onAction="#buttonAddDisciplineToSemester" text="Добавить" />
-            <Button layoutX="812.0" layoutY="334.0" mnemonicParsing="false" onAction="#buttonUpDisciplineToSemester" text="Изменить" />
-            <DatePicker fx:id="dateOfReceipt" layoutX="103.0" layoutY="98.0" prefHeight="25.0" prefWidth="172.0" />
+            <Button layoutX="80.0" layoutY="266.0" mnemonicParsing="false" onAction="#buttonAddLearningYear" prefHeight="107.0" prefWidth="107.0" style="-fx-background-radius: 100; -fx-background-color: #5498ff;" text="Добавить">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></Button>
+            <Button layoutX="290.0" layoutY="266.0" mnemonicParsing="false" onAction="#buttonAddDisciplineToLearningPlane" prefHeight="107.0" prefWidth="109.0" style="-fx-background-radius: 100; -fx-background-color: #5498ff;" text="Добавить">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></Button>
+            <Button layoutX="435.0" layoutY="266.0" mnemonicParsing="false" onAction="#buttonUpDisciplineLearningPlane" prefHeight="107.0" prefWidth="109.0" style="-fx-background-radius: 100; -fx-background-color: #5498ff;" text="Изменить">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></Button>
+            <Button layoutX="664.0" layoutY="266.0" mnemonicParsing="false" onAction="#buttonAddDisciplineToSemester" prefHeight="107.0" prefWidth="109.0" style="-fx-background-radius: 100; -fx-background-color: #5498ff;" text="Добавить">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></Button>
+            <Button layoutX="811.0" layoutY="266.0" mnemonicParsing="false" onAction="#buttonUpDisciplineToSemester" prefHeight="107.0" prefWidth="109.0" style="-fx-background-radius: 100; -fx-background-color: #5498ff;" text="Изменить">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></Button>
+            <DatePicker fx:id="dateOfReceipt" layoutX="47.0" layoutY="109.0" prefHeight="33.0" prefWidth="172.0">
+               <effect>
+                  <InnerShadow />
+               </effect></DatePicker>
             <Label fx:id="lblStatus" alignment="TOP_LEFT" layoutX="14.0" layoutY="375.0" prefHeight="43.0" prefWidth="997.0" wrapText="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-            <Label layoutX="105.0" layoutY="31.0" text="Учебный план">
+            <Label layoutX="49.0" layoutY="13.0" text="Учебный план">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="20.0" />
                </font>
+               <effect>
+                  <InnerShadow />
+               </effect>
             </Label>
-            <Label layoutX="431.0" layoutY="31.0" text="Дисциплина/Учебный план">
+            <Label layoutX="270.0" layoutY="16.0" text="Дисциплина/Учебный план">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="20.0" />
                </font>
+               <effect>
+                  <InnerShadow />
+               </effect>
             </Label>
-            <Label layoutX="723.0" layoutY="31.0" text="Семестер/Учебный план">
+            <Label layoutX="643.0" layoutY="14.0" text="Семестер/Учебный план">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="20.0" />
                </font>
+               <effect>
+                  <InnerShadow />
+               </effect>
             </Label>
+            <Line endX="19.0" endY="-19.0" layoutX="227.0" layoutY="367.0" startX="19.0" startY="-355.0" />
+            <Line endX="19.0" endY="-19.0" layoutX="601.0" layoutY="368.0" startX="19.0" startY="-355.0" />
          </children></AnchorPane>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="29.0" prefWidth="241.0" text="Учебный план">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="Trebuchet MS Bold" size="30.0" />
          </font>
+         <effect>
+            <Reflection fraction="0.3" topOpacity="0.3" />
+         </effect>
       </Label>
-      <TableView fx:id="tableLearningPlane" layoutX="14.0" layoutY="509.0" prefHeight="285.0" prefWidth="1278.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+      <TableView fx:id="tableLearningPlane" layoutX="14.0" layoutY="509.0" prefHeight="285.0" prefWidth="1278.0" style="-fx-border-color: #000; -fx-border-width: 2;" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
         <columns>
           <TableColumn fx:id="columnSpecialty" prefWidth="75.0" text="Специальность" />
           <TableColumn fx:id="columnQualification" prefWidth="75.0" text="Квалификация" />
@@ -115,6 +183,12 @@
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
+         <effect>
+            <InnerShadow />
+         </effect>
       </TableView>
    </children>
+   <effect>
+      <InnerShadow />
+   </effect>
 </AnchorPane>

@@ -12,7 +12,7 @@ public class ProgramStart extends Application {
 
 //  start window;
     public void start(Stage stage) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("/view/authorisationWindow.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("/view/mainWindow.fxml"));
         stage.setTitle("Студент");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/logo.png")));
         stage.setScene(new Scene(parent));

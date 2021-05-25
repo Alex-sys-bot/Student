@@ -7,12 +7,14 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720" prefWidth="1200" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.controllers.StudentWindowController">
+<AnchorPane prefHeight="720" prefWidth="1200" style="-fx-background-color: #96ecff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.controllers.StudentWindowController">
    <children>
-      <TableView fx:id="tableStudent" layoutX="14.0" layoutY="506.0" prefHeight="246.0" prefWidth="1170.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+      <TableView fx:id="tableStudent" layoutX="14.0" layoutY="506.0" prefHeight="246.0" prefWidth="1170.0" style="-fx-border-color: #000; -fx-border-width: 2;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
         <columns>
           <TableColumn fx:id="columnId" prefWidth="121.0" text="id" />
           <TableColumn fx:id="columnLastName" prefWidth="143.0" text="Фамилия" />
@@ -27,65 +29,122 @@
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
+         <effect>
+            <InnerShadow />
+         </effect>
       </TableView>
-      <AnchorPane layoutX="14.0" layoutY="50.0" prefHeight="392.0" prefWidth="820.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="50.0">
+      <AnchorPane layoutX="365.0" layoutY="54.0" prefHeight="392.0" prefWidth="820.0" style="-fx-border-color: #000; -fx-border-width: 2; -fx-border-radius: 40; -fx-background-color: #65bdfc; -fx-background-radius: 40;" AnchorPane.leftAnchor="365.0" AnchorPane.topAnchor="54.0">
          <children>
             <Label layoutX="28.0" layoutY="14.0" text="Фамилия">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
             <Label layoutX="28.0" layoutY="82.0" text="Имя">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
             <Label layoutX="28.0" layoutY="146.0" text="Отчество">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
             <Label layoutX="28.0" layoutY="207.0" text="Дата рождения">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtLastName" layoutX="28.0" layoutY="39.0" prefHeight="25.0" prefWidth="174.0" />
-            <TextField fx:id="txtFirstName" layoutX="28.0" layoutY="107.0" prefHeight="25.0" prefWidth="174.0" />
-            <TextField fx:id="txtPatronimyc" layoutX="28.0" layoutY="171.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextField fx:id="txtLastName" layoutX="28.0" layoutY="39.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-color: #000; -fx-background-radius: 30;">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></TextField>
+            <TextField fx:id="txtFirstName" layoutX="28.0" layoutY="107.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-color: #000; -fx-background-radius: 30;">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></TextField>
+            <TextField fx:id="txtPatronimyc" layoutX="28.0" layoutY="171.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-color: #000; -fx-background-radius: 30;">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></TextField>
             <Label layoutX="271.0" layoutY="14.0" text="Номер телефона">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtNumberPhone" layoutX="271.0" layoutY="39.0" prefHeight="25.0" prefWidth="174.0" />
-            <TextField fx:id="txtNumberCreditOfBook" layoutX="271.0" layoutY="171.0" prefHeight="25.0" prefWidth="174.0" />
-            <ComboBox fx:id="comboGroup" layoutX="271.0" layoutY="240.0" prefHeight="25.0" prefWidth="174.0" promptText="Список групп" />
+            <TextField fx:id="txtNumberPhone" layoutX="271.0" layoutY="39.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-color: #000; -fx-background-radius: 30;">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></TextField>
+            <TextField fx:id="txtNumberCreditOfBook" layoutX="271.0" layoutY="171.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-color: #000; -fx-background-radius: 30;">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></TextField>
+            <ComboBox fx:id="comboGroup" layoutX="271.0" layoutY="240.0" prefHeight="33.0" prefWidth="174.0" promptText="Список групп" style="-fx-border-radius: 30; -fx-background-radius: 30;">
+               <effect>
+                  <InnerShadow />
+               </effect></ComboBox>
             <Label layoutX="271.0" layoutY="82.0" text="Дата поступления">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
             <Label layoutX="271.0" layoutY="146.0" text="Номер зачётной книги">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <DatePicker fx:id="dateBirthday" layoutX="28.0" layoutY="240.0" />
-            <DatePicker fx:id="dateOfReceipt" layoutX="271.0" layoutY="107.0" />
-            <Label layoutX="271.0" layoutY="207.0" text="Группа">
+            <DatePicker fx:id="dateBirthday" layoutX="28.0" layoutY="240.0" prefHeight="33.0" prefWidth="174.0">
+               <effect>
+                  <InnerShadow />
+               </effect></DatePicker>
+            <DatePicker fx:id="dateOfReceipt" layoutX="271.0" layoutY="107.0" prefHeight="35.0" prefWidth="174.0">
+               <effect>
+                  <InnerShadow />
+               </effect></DatePicker>
+            <Label layoutX="271.0" layoutY="212.0" text="Группа">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="337.0" layoutY="284.0" mnemonicParsing="false" onAction="#buttonAddStudent" prefHeight="33.0" prefWidth="147.0" text="Добавить студента" />
+            <Button alignment="CENTER" layoutX="530.0" layoutY="175.0" mnemonicParsing="false" onAction="#buttonAddStudent" prefHeight="107.0" prefWidth="107.0" style="-fx-background-color: #5498ff; -fx-background-radius: 100;" text="Добавить студента" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></Button>
             <Label fx:id="lblStatus" alignment="TOP_LEFT" layoutX="14.0" layoutY="327.0" prefHeight="58.0" prefWidth="797.0" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
          </children>
+         <effect>
+            <InnerShadow />
+         </effect>
       </AnchorPane>
       <Label layoutX="15.0" layoutY="14.0" text="Студенты" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="14.0">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="Trebuchet MS Bold" size="30.0" />
          </font>
+         <effect>
+            <Reflection fraction="0.3" topOpacity="0.3" />
+         </effect>
       </Label>
    </children>
+   <effect>
+      <InnerShadow />
+   </effect>
 </AnchorPane>

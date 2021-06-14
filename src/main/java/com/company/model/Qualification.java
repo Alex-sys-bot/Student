@@ -30,6 +30,5 @@ public class Qualification {
     @Override
     public String toString() {
         return name;
-
     }
 }

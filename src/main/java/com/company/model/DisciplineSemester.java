@@ -24,7 +24,7 @@ public class DisciplineSemester {
     @JoinColumn(name = "discipline_learning_plan_id", nullable = false)
     private DisciplineLearningPlan disciplineLearningPlan;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "semester_id", nullable = false)
     private Semester semester;
 

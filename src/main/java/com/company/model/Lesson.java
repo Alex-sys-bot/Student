@@ -38,6 +38,10 @@ public class Lesson {
                 + disciplineSemester.getDisciplineLearningPlan().getLearningPlan()
                 .getYearOfAdmission().toString().substring(0,10)
                 + ", семестр: " + disciplineSemester.getSemester().getNumberSemester() + ", курс: "
-                + disciplineSemester.getSemester().getCourse().getNumberCourse();
+                + disciplineSemester.getSemester().getCourse().getNumberCourse()
+                + ", Дисциплина: " + disciplineSemester.getDisciplineLearningPlan().getDiscipline().getName()
+                + ", Квалификация: " + disciplineSemester.getDisciplineLearningPlan()
+                .getLearningPlan().getQualification().getName();
+
     }
 }

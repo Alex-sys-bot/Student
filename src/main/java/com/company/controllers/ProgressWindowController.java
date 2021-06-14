@@ -8,16 +8,23 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import org.hibernate.Session;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ProgressWindowController {
 
@@ -73,8 +80,10 @@ public class ProgressWindowController {
     private ComboBox<CourseGroup> comboSortByGroup;
 
     @FXML
-    private ComboBox<Semester> comboSortBySemester;
+    private ComboBox<Integer> comboSortBySemester;
 
+    @FXML
+    private ComboBox<Qualification> sortByQualification;
 
     ObservableList<Student> listStudent = FXCollections.observableArrayList();
     ObservableList<DisciplineSemester> listDisciplineSemester = FXCollections.observableArrayList();
@@ -83,15 +92,20 @@ public class ProgressWindowController {
 
     ObservableList<Discipline> listSortDiscipline = FXCollections.observableArrayList();
     ObservableList<CourseGroup> listSortGroup = FXCollections.observableArrayList();
-    ObservableList<Semester> listSortSemester = FXCollections.observableArrayList();
+    ObservableList<Progress> listProgresses = FXCollections.observableArrayList();
+    ObservableList<Integer> listSemesters = FXCollections.observableArrayList(1,2,3,4,5,6,7,8);
+    ObservableList<Qualification> listQualification = FXCollections.observableArrayList();
+
+    private int numberSemester;
 
     @FXML
     public void initialize(){
         takeDataFromDataBase();
         initTableProgress(listStudent);
-        sortByDiscipline();
+        sortBySemester();
+        sortByDiscipline(listStudent);
+        setSortByQualification();
     }
-
 
     private void takeDataFromDataBase(){
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
@@ -120,22 +134,33 @@ public class ProgressWindowController {
         listSortGroup.addAll(groupDao.returnAll());
         comboSortByGroup.setItems(listSortGroup);
 
-        Dao<Semester, Integer> semesterDao = new SemesterService(factory);
-        listSortSemester.addAll(semesterDao.returnAll());
-        comboSortBySemester.setItems(listSortSemester);
+        Dao<Progress, Integer> progressIntegerDao = new ProgressService(factory);
+        listProgresses.addAll(progressIntegerDao.returnAll());
+
+        Dao<Qualification, Integer> qualificationIntegerDao = new QualificationService(factory);
+        listQualification.addAll(qualificationIntegerDao.returnAll());
+        sortByQualification.setItems(listQualification);
     }
 
-    private void sortByDiscipline(){
-        ObservableList<Student> students = FXCollections.observableArrayList();
-        comboSortByDiscipline.valueProperty().addListener((obj, oldValue, newValue) -> {
-            students.clear();
-            lblDiscipline.setText(newValue.getName());
-
-            for (Student student: listStudent) {
-                students.addAll(student);
+    private void setSortByQualification(){
+        sortByQualification.valueProperty().addListener((obj, oldValue, newValue) -> {
+            ObservableList<Lesson> list = FXCollections.observableArrayList();
+            for (Lesson lesson: listLesson) {
+                if (lesson.getDisciplineSemester()
+                        .getDisciplineLearningPlan()
+                        .getLearningPlan().getQualification().getName().equals(newValue.getName())){
+                    list.add(lesson);
+                }
             }
-            initTableProgress(students);
-            sortByGroup(students);
+            comboLesson.setItems(list);
+        });
+    }
+
+    private void sortByDiscipline(ObservableList<Student> listStudent) {
+        comboSortByDiscipline.valueProperty().addListener((obj, oldValue, newValue) -> {
+            lblDiscipline.setText(newValue.getName());
+            initTableProgress(listStudent);
+            sortByGroup(listStudent);
         });
     }
 
@@ -149,33 +174,14 @@ public class ProgressWindowController {
                     students.addAll(student);
                 }
             }
-            tableProgress.setItems(students);
-            sortBySemester(students);
+            initTableProgress(students);
         });
     }
 
-    private void sortBySemester(ObservableList<Student> listStudent){
-        comboSortBySemester.valueProperty().addListener((obj, oldValue, newValue) -> {
-            SessionFactory factory = new Configuration().configure().buildSessionFactory();
-
-            Dao<Semester, Integer> semesterIntegerDao = new SemesterService(factory);
-
-            ObservableList<Student> students = FXCollections.observableArrayList();
-            students.clear();
-
-            Set<Semester> semesterSet = new HashSet<>();
-            semesterSet.addAll(semesterIntegerDao.returnAll());
-
-            for (Semester semester: semesterSet) {
-                if (semester.getId() == newValue.getId()) {
-                    System.out.println(semester);
-                    for (Student student: listStudent) {
-//                        students.addAll(query.list());
-                    }
-                }
-            }
-
-//            tableProgress.setItems(students);
+    private void sortBySemester() {
+        comboSortBySemester.setItems(listSemesters);
+        comboSortBySemester.valueProperty().addListener((observableValue, integer, t1) ->{
+            numberSemester = t1;
         });
     }
 
@@ -186,6 +192,7 @@ public class ProgressWindowController {
         columnPatronymic.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getPatronymic()));
         columnRating.setCellValueFactory(p -> {
 
+//            listRatings;
             ObservableList<String> list = FXCollections.observableArrayList();
             Set<Progress> listProgress = p.getValue().getProgresses();
                 for (Progress progress : listProgress) {
@@ -193,20 +200,25 @@ public class ProgressWindowController {
                             && progress.getLesson()
                             .getDisciplineSemester()
                             .getDisciplineLearningPlan()
-                            .getDiscipline().getName().equals(lblDiscipline.getText())) {
-                        String str = progress.getLesson().getDateLesson().toString().substring(0, 10) + " - " + progress.getRating();
-                        list.add(str);
+                            .getDiscipline().getName().equals(lblDiscipline.getText())
+                            && progress.getLesson()
+                            .getDisciplineSemester()
+                            .getSemester().getNumberSemester() == numberSemester){
+
+//                        if true {write value};
+                            String str = progress.getLesson().getDateLesson().toString().substring(0, 10) + " - " + progress.getRating();
+                            list.add(str);
                     }
                 }
 
                 if (list.size() != 0) {
                     return new SimpleObjectProperty<>(String.valueOf(list));
                 } else {
-                    return new SimpleObjectProperty<>("");
+                    return new SimpleObjectProperty<>("н");
                 }
         });
-
-
+        columnRating.setEditable(true);
+        columnRating.cellValueFactoryProperty();
 
 //        Calculating the average score;
         columnMidlBall.setCellValueFactory(p -> {
@@ -218,15 +230,16 @@ public class ProgressWindowController {
                 for (Progress progress : progresses) {
                     if (progress.getLesson().getDisciplineSemester()
                             .getDisciplineLearningPlan().getDiscipline()
-                            .getName().equals(lblDiscipline.getText())) {
+                            .getName().equals(lblDiscipline.getText())
+                            && progress.getLesson().getDisciplineSemester()
+                            .getSemester().getNumberSemester() == numberSemester) {
                         sizeRating += 1;
                         rating += progress.getRating();
                     }
                 }
                 return new SimpleObjectProperty<>(String.format("%.1f",(double) rating / sizeRating));
-            }
-
-            return new SimpleObjectProperty<>(String.valueOf(0));
+            } else
+            return new SimpleObjectProperty<>("0");
         });
     }
 
@@ -236,7 +249,6 @@ public class ProgressWindowController {
         listStudent.clear();
         listDisciplineSemester.clear();
         listSortGroup.clear();
-        listSortSemester.clear();
         listSortDiscipline.clear();
         initialize();
     }
@@ -307,6 +319,17 @@ public class ProgressWindowController {
             lblStatus.setTextFill(Color.GREEN);
             lblStatus.setText("Оценка добавлена");
         }
+    }
+
+    @FXML
+    void buttonUpdateRating(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent parent = FXMLLoader.load(getClass().getResource("/view/EditRatingWindow.fxml"));
+        stage.setTitle("Студент");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/logo.png")));
+        stage.setScene(new Scene(parent));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
     }
 }
 

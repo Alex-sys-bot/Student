@@ -21,7 +21,7 @@ public class GroupService implements Dao<Grup, Integer> {
         try(Session session = factory.openSession()){
             session.beginTransaction();
             session.save(grup);
-            session.getTransaction();
+            session.getTransaction().commit();
         }
     }
 
@@ -30,7 +30,7 @@ public class GroupService implements Dao<Grup, Integer> {
         try(Session session = factory.openSession()){
             session.beginTransaction();
             session.update(grup);
-            session.getTransaction();
+            session.getTransaction().commit();
         }
     }
 
@@ -39,7 +39,7 @@ public class GroupService implements Dao<Grup, Integer> {
         try(Session session = factory.openSession()){
             session.beginTransaction();
             session.delete(grup);
-            session.getTransaction();
+            session.getTransaction().commit();
         }
     }
 

@@ -19,7 +19,7 @@ public class Grup {
     private int id;
 
     @Column(name = "number_order", nullable = false)
-    private String numberOrder;
+    private int numberOrder;
 
     @Column(nullable = false)
     private Date date;

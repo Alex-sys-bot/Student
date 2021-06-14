@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.effect.Reflection?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="730.0" prefWidth="1200.0" style="-fx-background-color: #96ecff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.controllers.GroupWindowController">
    <children>
-      <TableView fx:id="tableCourseGroup" layoutX="15.0" layoutY="421.0" prefHeight="270.0" prefWidth="1170.0" style="-fx-border-color: #000; -fx-border-width: 2;" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+      <TableView fx:id="tableCourseGroup" layoutX="15.0" layoutY="421.0" prefHeight="250.0" prefWidth="1170.0" style="-fx-border-color: #000; -fx-border-width: 2;" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
         <columns>
           <TableColumn fx:id="columnId" prefWidth="61.0" text="id" />
           <TableColumn fx:id="columnNumberOfOrder" prefWidth="304.0" text="№ Приказа формирования группы" />
@@ -31,79 +24,89 @@
             <InnerShadow />
          </effect>
       </TableView>
-      <AnchorPane layoutX="297.0" layoutY="12.0" prefHeight="400.0" prefWidth="650.0" style="-fx-border-color: #000; -fx-border-width: 2; -fx-border-radius: 40; -fx-background-color: #65bdfc; -fx-background-radius: 40;" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="12.0">
+      <AnchorPane layoutX="14.0" layoutY="67.0" prefHeight="375.0" prefWidth="915.0" style="-fx-border-color: #000; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-color: #65bdfc; -fx-background-radius: 10;" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="67.0">
          <children>
-            <Label layoutX="48.0" layoutY="28.0" text="№ Приказа формирования группы" AnchorPane.leftAnchor="48.0">
+            <Label layoutX="16.0" layoutY="21.0" text="№ Приказа формирования группы" AnchorPane.leftAnchor="16.0">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtNumberOrder" layoutX="47.0" layoutY="56.0" prefHeight="25.0" prefWidth="203.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #000;">
+            <TextField fx:id="txtNumberOrder" layoutX="16.0" layoutY="59.0" prefHeight="25.0" prefWidth="203.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #000;">
                <font>
                   <Font name="Trebuchet MS Bold" size="15.0" />
                </font>
                <effect>
                   <InnerShadow />
                </effect></TextField>
-            <Label layoutX="47.0" layoutY="95.0" prefHeight="21.0" prefWidth="261.0" text="Дата формирования группы">
+            <Label layoutX="14.0" layoutY="109.0" prefHeight="21.0" prefWidth="261.0" text="Дата формирования группы">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="384.0" layoutY="32.0" prefHeight="17.0" prefWidth="226.0" text="Шифр группы">
+            <Label layoutX="351.0" layoutY="21.0" prefHeight="17.0" prefWidth="226.0" text="Шифр группы">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtCipherGroup" layoutX="384.0" layoutY="60.0" prefHeight="25.0" prefWidth="203.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #000;">
+            <TextField fx:id="txtCipherGroup" layoutX="351.0" layoutY="59.0" prefHeight="25.0" prefWidth="203.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #000;">
                <font>
                   <Font name="Trebuchet MS Bold" size="15.0" />
                </font>
                <effect>
                   <InnerShadow />
                </effect></TextField>
-            <DatePicker fx:id="dateCreateGroup" layoutX="47.0" layoutY="124.0" prefHeight="31.0" prefWidth="203.0" style="-fx-border-radius: 30;">
+            <DatePicker fx:id="dateCreateGroup" layoutX="14.0" layoutY="145.0" prefHeight="31.0" prefWidth="203.0" style="-fx-border-radius: 30;">
                <effect>
                   <InnerShadow />
                </effect></DatePicker>
-            <Button alignment="CENTER" layoutX="270.0" layoutY="223.0" mnemonicParsing="false" onAction="#buttonAddGroup" prefHeight="110.0" prefWidth="110.0" style="-fx-background-radius: 100; -fx-background-color: #5498ff;" text="Добавить группу" textAlignment="CENTER" wrapText="true">
+            <Button alignment="CENTER" layoutX="737.0" layoutY="47.0" mnemonicParsing="false" onAction="#buttonAddGroup" prefHeight="56.0" prefWidth="168.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Добавить группу" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
                <effect>
                   <InnerShadow />
                </effect></Button>
-            <ComboBox fx:id="comboCourse" layoutX="384.0" layoutY="187.0" prefHeight="31.0" prefWidth="203.0" promptText="Список курсов" style="-fx-border-radius: 30; -fx-background-radius: 30;" />
-            <Label layoutX="384.0" layoutY="165.0" text="Курсы">
+            <ComboBox fx:id="comboCourse" layoutX="351.0" layoutY="223.0" prefHeight="31.0" prefWidth="203.0" promptText="Список курсов" style="-fx-border-radius: 30; -fx-background-radius: 30;" />
+            <Label layoutX="351.0" layoutY="191.0" text="Курсы">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="383.0" layoutY="99.0" text="Учебный год">
+            <Label layoutX="351.0" layoutY="117.0" text="Учебный год">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtNameGroup" layoutX="45.0" layoutY="183.0" prefHeight="25.0" prefWidth="203.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #000;">
+            <TextField fx:id="txtNameGroup" layoutX="14.0" layoutY="223.0" prefHeight="25.0" prefWidth="203.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #000;">
                <font>
                   <Font name="Trebuchet MS Bold" size="15.0" />
                </font>
                <effect>
                   <InnerShadow />
                </effect></TextField>
-            <Label layoutX="45.0" layoutY="161.0" prefHeight="20.0" prefWidth="203.0" text="Название группы">
+            <Label layoutX="19.0" layoutY="187.0" prefHeight="20.0" prefWidth="203.0" text="Название группы">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtLearningYear" layoutX="384.0" layoutY="128.0" prefHeight="25.0" prefWidth="203.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #000;">
+            <TextField fx:id="txtLearningYear" layoutX="351.0" layoutY="145.0" prefHeight="25.0" prefWidth="203.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #000;">
                <font>
                   <Font name="Trebuchet MS Bold" size="15.0" />
                </font>
                <effect>
                   <InnerShadow />
                </effect></TextField>
-            <Label fx:id="lblStatus" alignment="TOP_LEFT" layoutX="18.0" layoutY="327.0" prefHeight="47.0" prefWidth="659.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" />
+            <Label fx:id="lblStatus" alignment="TOP_LEFT" layoutX="21.0" layoutY="327.0" prefHeight="62.0" prefWidth="877.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Button alignment="CENTER" contentDisplay="TOP" layoutX="737.0" layoutY="117.0" mnemonicParsing="false" onAction="#buttonUpdateGroup" prefHeight="56.0" prefWidth="168.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Изменить" textAlignment="CENTER">
+               <effect>
+                  <InnerShadow />
+               </effect>
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font></Button>
          </children>
          <effect>
             <InnerShadow />
@@ -117,7 +120,10 @@
             <Reflection fraction="0.3" topOpacity="0.2" />
          </effect>
       </Label>
-      <Label fx:id="lblQuantityAllStudentsInCourse" layoutX="15.0" layoutY="698.0" prefHeight="17.0" prefWidth="657.0" />
+      <Label fx:id="lblQuantityAllStudentsInCourse" layoutX="15.0" layoutY="698.0" prefHeight="21.0" prefWidth="657.0">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
    </children>
    <effect>
       <InnerShadow />

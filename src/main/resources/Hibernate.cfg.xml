@@ -32,5 +32,7 @@
         <mapping class="com.company.model.Grup"/>
         <mapping class="com.company.model.TypeLesson"/>
         <mapping class="com.company.model.Lesson"/>
+        <mapping class="com.company.model.User"/>
+        <mapping class="com.company.model.Role"/>
     </session-factory>
 </hibernate-configuration>

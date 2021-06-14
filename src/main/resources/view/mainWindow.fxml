@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
 
 <AnchorPane fx:id="parentWindow" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #96ecff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.controllers.MainWindowController">
    <children>
@@ -50,16 +45,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#buttonOpenLearningPlaneWindow" text="Учебный план" />
                   <MenuItem mnemonicParsing="false" onAction="#upScreen" text="Обновить экран" />
                   <MenuItem fx:id="hide" mnemonicParsing="false" onAction="#buttonCloseProgram" text="Выйти из программы" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Редактирование">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Поддержка">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
             </items>
           </Menu>
         </menus>

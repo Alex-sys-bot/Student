@@ -95,35 +95,21 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="56.0" layoutY="279.0" mnemonicParsing="false" onAction="#buttonAddLearningYear" prefHeight="60.0" prefWidth="125.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Добавить">
+            <Button fx:id="addLearningPlan" layoutX="56.0" layoutY="279.0" mnemonicParsing="false" onAction="#buttonAddLearningYear" prefHeight="60.0" prefWidth="125.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Добавить">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
                <effect>
                   <InnerShadow />
                </effect></Button>
-            <Button layoutX="283.0" layoutY="279.0" mnemonicParsing="false" onAction="#buttonAddDisciplineToLearningPlane" prefHeight="60.0" prefWidth="125.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Добавить">
+            <Button fx:id="addDisciplineSemester" layoutX="283.0" layoutY="279.0" mnemonicParsing="false" onAction="#buttonAddDisciplineToLearningPlane" prefHeight="60.0" prefWidth="125.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Добавить">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
                <effect>
                   <InnerShadow />
                </effect></Button>
-            <Button layoutX="453.0" layoutY="279.0" mnemonicParsing="false" onAction="#buttonUpDisciplineLearningPlane" prefHeight="60.0" prefWidth="125.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Изменить">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="18.0" />
-               </font>
-               <effect>
-                  <InnerShadow />
-               </effect></Button>
-            <Button layoutX="681.0" layoutY="279.0" mnemonicParsing="false" onAction="#buttonAddDisciplineToSemester" prefHeight="60.0" prefWidth="125.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Добавить">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="18.0" />
-               </font>
-               <effect>
-                  <InnerShadow />
-               </effect></Button>
-            <Button layoutX="840.0" layoutY="279.0" mnemonicParsing="false" onAction="#buttonUpDisciplineToSemester" prefHeight="60.0" prefWidth="125.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Изменить">
+            <Button fx:id="addSemesterLearningPlan" layoutX="681.0" layoutY="279.0" mnemonicParsing="false" onAction="#buttonAddDisciplineToSemester" prefHeight="60.0" prefWidth="125.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Добавить">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>

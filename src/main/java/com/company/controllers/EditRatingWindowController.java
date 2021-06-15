@@ -9,8 +9,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class EditRatingWindowController {
 
@@ -59,6 +70,9 @@ public class EditRatingWindowController {
     @FXML
     private Label lblStatus;
 
+    @FXML
+    private Button updateRating;
+
     private final ObservableList<Progress> listProgress = FXCollections.observableArrayList();
     private final ObservableList<Grup> listGroups = FXCollections.observableArrayList();
     private final ObservableList<Semester> listSemesters = FXCollections.observableArrayList();
@@ -74,6 +88,14 @@ public class EditRatingWindowController {
         initTableProgress();
         sortByGroup();
         takeDataFromTable();
+    }
+
+    public void close(){
+        updateRating.setDisable(true);
+    }
+
+    public void open(){
+        updateRating.setDisable(false);
     }
 
     private void takeDataFromDataBase(){
@@ -200,6 +222,49 @@ public class EditRatingWindowController {
         initialize();
     }
 
+    private void exportToExel() throws IOException {
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showSaveDialog(new Stage());
+        String pathToFile = file.getAbsolutePath();
+
+        int sizeTableProgress = tableProgress.getColumns().size();
+        XSSFWorkbook progress = new XSSFWorkbook();
+        Sheet sheet = progress.createSheet();
+
+        Row columnNames = sheet.createRow(0);
+
+        for (int i = 0; i < sizeTableProgress; i++) {
+            Cell cell = columnNames.createCell(i);
+            cell.setCellValue(tableProgress.getColumns().get(i).getText());
+        }
+
+        for (int i = 0; i < tableProgress.getItems().size(); i++) {
+            Row row = sheet.createRow(i + 1);
+            Cell lastName = row.createCell(0);
+            Cell firstName = row.createCell(1);
+            Cell patronymic = row.createCell(2);
+            Cell group = row.createCell(3);
+            Cell date = row.createCell(4);
+            Cell rating = row.createCell(5);
+            Cell themLesson = row.createCell(6);
+            Cell discipline = row.createCell(7);
+
+            lastName.setCellValue(tableProgress.getItems().get(i).getStudent().getLast_name());
+            firstName.setCellValue(tableProgress.getItems().get(i).getStudent().getFirst_name());
+            patronymic.setCellValue(tableProgress.getItems().get(i).getStudent().getPatronymic());
+            group.setCellValue(tableProgress.getItems().get(i).getStudent().getCourseGroup().getGrup().getNameGroup());
+            date.setCellValue(String.valueOf(tableProgress.getColumns().get(4).getCellObservableValue(i).getValue()));
+            rating.setCellValue(tableProgress.getItems().get(i).getRating());
+            themLesson.setCellValue(tableProgress.getItems().get(i).getLesson().getThemeLesson());
+            discipline.setCellValue(String.valueOf(tableProgress.getColumns().get(7).getCellObservableValue(i).getValue()));
+        }
+
+//        sheet.autoSizeColumn(1);
+            progress.write(new FileOutputStream(pathToFile + ".xlsx"));
+            progress.close();
+
+    }
+
     @FXML
     void buttonUpdateRating(ActionEvent event) {
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
@@ -215,6 +280,11 @@ public class EditRatingWindowController {
 
         progressIntegerDao.update(progress);
         clearScreen();
+    }
+
+    @FXML
+    void buttonExport() throws IOException {
+        exportToExel();
     }
 }
 

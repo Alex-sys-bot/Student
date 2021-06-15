@@ -14,12 +14,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
-import javax.persistence.OneToMany;
 import java.io.IOException;
 
 public class AuthorisationWindowController {
@@ -37,6 +35,8 @@ public class AuthorisationWindowController {
     private Label lblStatus;
 
     private final ObservableList<User> listUsers = FXCollections.observableArrayList();
+
+    public static String role;
 
     public void initialize(){
         takeDataFromDataBase();
@@ -57,14 +57,20 @@ public class AuthorisationWindowController {
             lblStatus.setText("Поле Пароль пустое");
         } else {
             for (User user : listUsers) {
+                role = user.getRole().getRole();
                 if (!user.getLogin().equals(txtLogin.getText()) || !user.getPassword().equals(txtPassword.getText())){
                     lblStatus.setText("Неверные Логин или Пароль");
                 } else if (user.getLogin().equals(txtLogin.getText()) || user.getPassword().equals(txtPassword.getText())){
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mainWindow.fxml"));
+                    AnchorPane anchorPane = loader.load();
+                    MainWindowController mainWindowController = loader.getController();
+                    mainWindowController.takeRole(role);
+
                     Stage stage = new Stage();
-                    Parent parent = FXMLLoader.load(getClass().getResource("/view/mainWindow.fxml"));
                     stage.setTitle("Студент");
                     stage.getIcons().add(new Image(getClass().getResourceAsStream("/logo.png")));
-                    stage.setScene(new Scene(parent));
+                    stage.setScene(new Scene(anchorPane));
+                    System.out.println(role);
                     stage.show();
 
                     hide.getScene().getWindow().hide();

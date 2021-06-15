@@ -60,6 +60,12 @@ public class SpecialtyWindowController {
     @FXML
     private ComboBox<Specialty> comboSortSpecialties;
 
+    @FXML
+    private Button addSpecialty;
+
+    @FXML
+    private Button addQualification;
+
 
     ObservableList<Specialty> listSpecialty = FXCollections.observableArrayList();
     ObservableList<Qualification> listQualification = FXCollections.observableArrayList();
@@ -69,6 +75,16 @@ public class SpecialtyWindowController {
         takeDataFromDataBase();
         initTableSpecialty();
         sortSpecialtyByName();
+    }
+
+    public void close(){
+        addSpecialty.setDisable(true);
+        addQualification.setDisable(true);
+    }
+
+    public void open(){
+        addSpecialty.setDisable(false);
+        addQualification.setDisable(false);
     }
 
     private void takeDataFromDataBase(){

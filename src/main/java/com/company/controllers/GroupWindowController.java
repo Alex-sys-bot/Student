@@ -1,10 +1,7 @@
 package com.company.controllers;
 
 import com.company.dao.Dao;
-import com.company.model.Course;
-import com.company.model.CourseGroup;
-import com.company.model.Grup;
-import com.company.model.Student;
+import com.company.model.*;
 import com.company.service.CourseGroupService;
 import com.company.service.CourseService;
 import com.company.service.GroupService;
@@ -26,6 +23,12 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class GroupWindowController {
+
+    @FXML
+    private Button updateGroup;
+
+    @FXML
+    private Button addGroup;
 
     @FXML
     private TableView<CourseGroup> tableCourseGroup;
@@ -85,6 +88,7 @@ public class GroupWindowController {
 
     @FXML
     public void initialize(){
+//        checker roles;
         takeDataFromDataBase();
         initTableCourseGroup();
         comboCourse.setItems(listCourse);
@@ -102,6 +106,11 @@ public class GroupWindowController {
 
         Dao<Student, Integer> daoStudent = new StudentService(factory);
         listStudent.addAll(daoStudent.returnAll());
+    }
+
+    public void checkRole(){
+            addGroup.setDisable(true);
+            updateGroup.setDisable(true);
     }
 
     private void initTableCourseGroup(){

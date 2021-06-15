@@ -59,7 +59,7 @@
                <effect>
                   <InnerShadow />
                </effect></DatePicker>
-            <Button alignment="CENTER" layoutX="737.0" layoutY="47.0" mnemonicParsing="false" onAction="#buttonAddGroup" prefHeight="56.0" prefWidth="168.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Добавить группу" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="addGroup" alignment="CENTER" layoutX="737.0" layoutY="47.0" mnemonicParsing="false" onAction="#buttonAddGroup" prefHeight="56.0" prefWidth="168.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Добавить группу" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
@@ -100,7 +100,7 @@
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Button alignment="CENTER" contentDisplay="TOP" layoutX="737.0" layoutY="117.0" mnemonicParsing="false" onAction="#buttonUpdateGroup" prefHeight="56.0" prefWidth="168.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Изменить" textAlignment="CENTER">
+            <Button fx:id="updateGroup" alignment="CENTER" contentDisplay="TOP" layoutX="737.0" layoutY="117.0" mnemonicParsing="false" onAction="#buttonUpdateGroup" prefHeight="56.0" prefWidth="168.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Изменить" textAlignment="CENTER">
                <effect>
                   <InnerShadow />
                </effect>

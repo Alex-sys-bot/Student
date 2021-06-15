@@ -122,7 +122,7 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" layoutX="676.0" layoutY="37.0" mnemonicParsing="false" onAction="#buttonAddStudent" prefHeight="58.0" prefWidth="126.0" style="-fx-background-color: #5498ff; -fx-background-radius: 10;" text="Добавить студента" textAlignment="CENTER" wrapText="true" AnchorPane.rightAnchor="18.0">
+            <Button fx:id="addStudent" alignment="CENTER" layoutX="676.0" layoutY="37.0" mnemonicParsing="false" onAction="#buttonAddStudent" prefHeight="58.0" prefWidth="126.0" style="-fx-background-color: #5498ff; -fx-background-radius: 10;" text="Добавить студента" textAlignment="CENTER" wrapText="true" AnchorPane.rightAnchor="18.0">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
@@ -133,7 +133,15 @@
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Button layoutX="731.0" layoutY="121.0" mnemonicParsing="false" onAction="#buttonUpdateStudent" prefHeight="58.0" prefWidth="126.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Изменить">
+            <Button fx:id="updateStudent" layoutX="731.0" layoutY="121.0" mnemonicParsing="false" onAction="#buttonUpdateStudent" prefHeight="58.0" prefWidth="126.0" style="-fx-background-radius: 10; -fx-background-color: #5498ff;" text="Изменить">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Button>
+            <Button alignment="TOP_CENTER" layoutX="731.0" layoutY="200.0" mnemonicParsing="false" onAction="#buttonExport" prefHeight="58.0" prefWidth="126.0" style="-fx-background-color: #5498ff; -fx-background-radius: 10;" text="Экспорт в .xlsx" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>

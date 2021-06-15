@@ -8,10 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -45,6 +42,12 @@ public class TeachersWindowController {
     @FXML
     private TextField txtPatronymic;
 
+    @FXML
+    private Button addTeacher;
+
+    @FXML
+    private Button updateTeacher;
+
     private final ObservableList<Teachers> listTeachers = FXCollections.observableArrayList();
     private Teachers teachers;
 
@@ -53,6 +56,16 @@ public class TeachersWindowController {
         takeDataFromDataBase();
         initTableDiscipline();
         takeDataFromTable();
+    }
+
+    public void close(){
+        addTeacher.setDisable(true);
+        updateTeacher.setDisable(true);
+    }
+
+    public void open(){
+        addTeacher.setDisable(false);
+        updateTeacher.setDisable(false);
     }
 
     private void takeDataFromDataBase(){

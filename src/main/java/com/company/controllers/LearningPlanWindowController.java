@@ -78,6 +78,15 @@ public class LearningPlanWindowController {
     private TableColumn<DisciplineSemester, String> columnTeachers;
 
     @FXML
+    private Button addLearningPlan;
+
+    @FXML
+    private Button addDisciplineSemester;
+
+    @FXML
+    private Button addSemesterLearningPlan;
+
+    @FXML
     private Label lblStatus;
 
     private final ObservableList<DisciplineSemester> listDisciplineSemester = FXCollections.observableArrayList();
@@ -94,6 +103,18 @@ public class LearningPlanWindowController {
         takeDataFromDataBase();
         initTable();
         initComboBox();
+    }
+
+    public void close(){
+        addLearningPlan.setDisable(true);
+        addSemesterLearningPlan.setDisable(true);
+        addDisciplineSemester.setDisable(true);
+    }
+
+    public void open(){
+        addLearningPlan.setDisable(false);
+        addSemesterLearningPlan.setDisable(false);
+        addDisciplineSemester.setDisable(false);
     }
 
     private void takeDataFromDataBase(){

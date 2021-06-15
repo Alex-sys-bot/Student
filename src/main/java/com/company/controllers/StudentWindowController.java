@@ -9,15 +9,21 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -85,6 +91,12 @@ public class StudentWindowController {
     @FXML
     private TextField txtSearch;
 
+    @FXML
+    private Button addStudent;
+
+    @FXML
+    private Button updateStudent;
+
     private final ObservableList<Student> listStudent = FXCollections.observableArrayList();
     private final ObservableList<CourseGroup> listGroup = FXCollections.observableArrayList();
     private Student student = new Student();
@@ -96,6 +108,11 @@ public class StudentWindowController {
         comboGroup.setItems(listGroup);
         searchStudent();
         takeDataFromTable();
+    }
+
+    public void checkerRole(){
+        addStudent.setDisable(true);
+        updateStudent.setDisable(true);
     }
 
     private void takeDataFromDataBase(){
@@ -181,6 +198,49 @@ public class StudentWindowController {
                 txtNumberCreditOfBook.setText(student.getNumberCreditBook());
             }
         });
+    }
+
+    private void exportToExel() throws IOException {
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showSaveDialog(new Stage());
+        String pathToFile = file.getAbsolutePath();
+
+        int sizeTableStudent = tableStudent.getColumns().size();
+        XSSFWorkbook student = new XSSFWorkbook();
+        Sheet sheet = student.createSheet();
+        Row nameColumns = sheet.createRow(0);
+
+        for (int i = 0; i < sizeTableStudent; i++) {
+            Cell cell = nameColumns.createCell(i);
+            cell.setCellValue(tableStudent.getColumns().get(i).getText());
+        }
+
+        for (int i = 0; i < tableStudent.getItems().size(); i++) {
+            Row valueCell = sheet.createRow(i + 1);
+
+            Cell id = valueCell.createCell(0);
+            Cell lastName = valueCell.createCell(1);
+            Cell firstName = valueCell.createCell(2);
+            Cell patronymic = valueCell.createCell(3);
+            Cell dateBirthday = valueCell.createCell(4);
+            Cell receiptOfDate = valueCell.createCell(5);
+            Cell numberOfCreditBook = valueCell.createCell(6);
+            Cell group = valueCell.createCell(7);
+            Cell numberPhone  = valueCell.createCell(8);
+
+            id.setCellValue(tableStudent.getItems().get(i).getId());
+            lastName.setCellValue(tableStudent.getItems().get(i).getLast_name());
+            firstName.setCellValue(tableStudent.getItems().get(i).getFirst_name());
+            patronymic.setCellValue(tableStudent.getItems().get(i).getPatronymic());
+            dateBirthday.setCellValue(String.valueOf(tableStudent.getColumns().get(4).getCellObservableValue(i).getValue()));
+            receiptOfDate.setCellValue(String.valueOf(tableStudent.getColumns().get(5).getCellObservableValue(i).getValue()));
+            numberOfCreditBook.setCellValue(tableStudent.getItems().get(i).getNumberCreditBook());
+            group.setCellValue(tableStudent.getItems().get(i).getCourseGroup().getGrup().getNameGroup());
+            numberPhone.setCellValue(tableStudent.getItems().get(i).getPhone());
+        }
+
+        student.write(new FileOutputStream(pathToFile + ".xlsx"));
+        student.close();
     }
 
     @FXML
@@ -317,5 +377,10 @@ public class StudentWindowController {
 //            clear screen;
             clearScreen();
         }
+    }
+
+    @FXML
+    void buttonExport(ActionEvent event) throws IOException {
+        exportToExel();
     }
 }

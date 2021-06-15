@@ -9,13 +9,5 @@ import org.hibernate.cfg.Configuration;
 
 public class Console {
     public static void main(String[] args) {
-        SessionFactory factory = new Configuration().configure().buildSessionFactory();
-        Dao<Teachers, Integer> teachersDao = new TeachersService(factory);
-
-        Teachers teachers = new Teachers();
-        teachers.setPatronymic("Викторович");
-        teachers.setFirstName("Иван");
-        teachers.setLastName("Волков");
-
     }
 }

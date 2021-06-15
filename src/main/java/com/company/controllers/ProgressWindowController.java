@@ -14,12 +14,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -85,6 +92,12 @@ public class ProgressWindowController {
     @FXML
     private ComboBox<Qualification> sortByQualification;
 
+    @FXML
+    private Button addLesson;
+
+    @FXML
+    private Button addRating;
+
     ObservableList<Student> listStudent = FXCollections.observableArrayList();
     ObservableList<DisciplineSemester> listDisciplineSemester = FXCollections.observableArrayList();
     ObservableList<TypeLesson> listTypeLesson = FXCollections.observableArrayList();
@@ -97,6 +110,7 @@ public class ProgressWindowController {
     ObservableList<Qualification> listQualification = FXCollections.observableArrayList();
 
     private int numberSemester;
+    private String role = AuthorisationWindowController.role;
 
     @FXML
     public void initialize(){
@@ -105,6 +119,15 @@ public class ProgressWindowController {
         sortBySemester();
         sortByDiscipline(listStudent);
         setSortByQualification();
+    }
+
+    public void checkRole(){
+        addLesson.setDisable(true);
+        addRating.setDisable(true);
+    }
+
+    public void takeRole(String role){
+        this.role = role;
     }
 
     private void takeDataFromDataBase(){
@@ -253,6 +276,49 @@ public class ProgressWindowController {
         initialize();
     }
 
+    private void exportExel() throws IOException {
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showSaveDialog(new Stage());
+        String path = file.getAbsolutePath();
+
+        int sizeTableProgress = tableProgress.getColumns().size();
+
+//        create document;
+        XSSFWorkbook progress = new XSSFWorkbook();
+//        creat sheet;
+        Sheet sheet = progress.createSheet("Успеваемость студентов");
+//        Create row;
+        Row columnNames = sheet.createRow(0);
+
+//        add name column;
+        for (int i = 0; i < sizeTableProgress; i++){
+//            add cell;
+            Cell cell = columnNames.createCell(i);
+            cell.setCellValue(tableProgress.getColumns().get(i).getText());
+        }
+
+        for (int i = 0; i < tableProgress.getItems().size(); i++){
+            Row row = sheet.createRow(i+1);
+//            Create Cell;
+            Cell lastName = row.createCell(0);
+            Cell name = row.createCell(1);
+            Cell patronymic = row.createCell(2);
+            Cell rating = row.createCell(3);
+            Cell avgBall = row.createCell(4);
+
+//            init Cell;
+            lastName.setCellValue(tableProgress.getItems().get(i).getLast_name());
+            name.setCellValue(tableProgress.getItems().get(i).getFirst_name());
+            patronymic.setCellValue(tableProgress.getItems().get(i).getPatronymic());
+            rating.setCellValue(String.valueOf(tableProgress.getColumns().get(3).getCellObservableValue(i).getValue()));
+            avgBall.setCellValue(String.valueOf(tableProgress.getColumns().get(4).getCellObservableValue(i).getValue()));
+        }
+
+        sheet.autoSizeColumn(1);
+            progress.write(new FileOutputStream(path + ".xlsx"));
+            progress.close();
+    }
+
     @FXML
     void buttonAddLesson(ActionEvent event) throws ParseException {
         if (dateLesson.getValue() == null && txtThemeLesson.getText().isEmpty()
@@ -324,12 +390,27 @@ public class ProgressWindowController {
     @FXML
     void buttonUpdateRating(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-        Parent parent = FXMLLoader.load(getClass().getResource("/view/EditRatingWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EditRatingWindow.fxml"));
+        AnchorPane anchorPane = loader.load();
+        EditRatingWindowController editRatingWindowController = loader.getController();
+
         stage.setTitle("Студент");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/logo.png")));
-        stage.setScene(new Scene(parent));
+        stage.setScene(new Scene(anchorPane));
         stage.initModality(Modality.APPLICATION_MODAL);
+
+        if (role.equals("Преподаватель") || role.equals("Разработчик")){
+            editRatingWindowController.open();
+        } else {
+            editRatingWindowController.close();
+        }
+
         stage.show();
+    }
+
+    @FXML
+    void buttonExportCSV(ActionEvent event) throws IOException {
+        exportExel();
     }
 }
 

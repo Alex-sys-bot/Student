@@ -40,14 +40,14 @@
                <effect>
                   <InnerShadow />
                </effect></TextField>
-                <Button layoutX="409.0" layoutY="205.0" mnemonicParsing="false" onAction="#buttonAddTeacher" prefHeight="69.0" prefWidth="144.0" style="-fx-background-color: #5498ff; -fx-background-radius: 10;" text="Добавить">
+                <Button fx:id="addTeacher" layoutX="409.0" layoutY="205.0" mnemonicParsing="false" onAction="#buttonAddTeacher" prefHeight="69.0" prefWidth="144.0" style="-fx-background-color: #5498ff; -fx-background-radius: 10;" text="Добавить">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
                <effect>
                   <InnerShadow />
                </effect></Button>
-                <Button layoutX="579.0" layoutY="205.0" mnemonicParsing="false" onAction="#buttonUpdateTeacher" prefHeight="69.0" prefWidth="144.0" style="-fx-background-color: #5498ff; -fx-background-radius: 10;" text="Изменить">
+                <Button fx:id="updateTeacher" layoutX="579.0" layoutY="205.0" mnemonicParsing="false" onAction="#buttonUpdateTeacher" prefHeight="69.0" prefWidth="144.0" style="-fx-background-color: #5498ff; -fx-background-radius: 10;" text="Изменить">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>

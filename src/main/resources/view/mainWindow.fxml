@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="parentWindow" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #96ecff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.controllers.MainWindowController">
+<AnchorPane fx:id="parentWindow" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #96ecff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.controllers.MainWindowController">
    <children>
       <TabPane layoutX="6.0" layoutY="25.0" prefHeight="602.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
         <tabs>
@@ -39,12 +44,13 @@
         <menus>
           <Menu mnemonicParsing="false" text="Файл">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#buttonOpenDisciplineWindow" text="Дисциплины" />
-              <MenuItem mnemonicParsing="false" onAction="#buttonOpenTeachersWindow" text="Преподаватели" />
-                  <MenuItem mnemonicParsing="false" onAction="#buttonOpenSpecialtyWindow" text="Специальности" />
-                  <MenuItem mnemonicParsing="false" onAction="#buttonOpenLearningPlaneWindow" text="Учебный план" />
+                  <MenuItem fx:id="discipline" mnemonicParsing="false" onAction="#buttonOpenDisciplineWindow" text="Дисциплины" />
+              <MenuItem fx:id="teachers" mnemonicParsing="false" onAction="#buttonOpenTeachersWindow" text="Преподаватели" />
+                  <MenuItem fx:id="specialty" mnemonicParsing="false" onAction="#buttonOpenSpecialtyWindow" text="Специальности" />
+                  <MenuItem fx:id="learningPlan" mnemonicParsing="false" onAction="#buttonOpenLearningPlaneWindow" text="Учебный план" />
+                  <MenuItem fx:id="administrator" mnemonicParsing="false" onAction="#buttonAdministrator" text="Администратор" />
                   <MenuItem mnemonicParsing="false" onAction="#upScreen" text="Обновить экран" />
-                  <MenuItem fx:id="hide" mnemonicParsing="false" onAction="#buttonCloseProgram" text="Выйти из программы" />
+                  <MenuItem mnemonicParsing="false" onAction="#buttonCloseProgram" text="Выйти из программы" />
             </items>
           </Menu>
         </menus>
